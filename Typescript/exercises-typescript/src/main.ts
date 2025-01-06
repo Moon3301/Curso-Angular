@@ -9,8 +9,8 @@ import { setupCounter } from './counter.ts'
 //import './04/homework-types.ts'
 //import './05/basic-destructuring.ts'
 //import './06/funtion-destructuring.ts'
-import './08/classes.ts'
-
+//import './08/classes.ts'
+import './10/decorators.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
