@@ -18,7 +18,7 @@ export class GifsService {
     this.loadlocalStorage();
     console.log('Gifs Service run');
 
-   }
+  }
 
   get tagsHistory(){
     return [...this._tagsHistory];
