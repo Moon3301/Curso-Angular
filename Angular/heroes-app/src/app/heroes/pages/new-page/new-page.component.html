@@ -1,7 +1,10 @@
 <h1>
-  Editar / Agregar
+  {{ currentHero.id ? 'Editar': 'Agregar'}}
   Heroe
-  <small> Superman </small>
+  @if (currentHero.id) {
+    <small> {{ currentHero.superhero}}</small>
+  }
+
 </h1>
 
 <mat-divider class="mb-2"></mat-divider>
@@ -12,61 +15,81 @@
     <mat-card>
       <mat-card-content>
 
-        <div class="grid">
-          <mat-form-field class="col-12 sm:col-6">
-            <mat-label>Super Heroe</mat-label>
-            <input
-            matInput
-            type="text"
-            required
-            >
-          </mat-form-field>
+        <form [formGroup]="heroForm" (ngSubmit)="onSubmit()">
+          <div class="grid">
+            <mat-form-field class="col-12 sm:col-6">
+              <mat-label>Super Heroe</mat-label>
+              <input
+              formControlName="superhero"
+              matInput
+              type="text"
+              required
+              >
+            </mat-form-field>
 
-          <mat-form-field class="col-12 sm:col-6">
-            <mat-label>Alter ego</mat-label>
-            <input
-            matInput
-            type="text"
-            required
-            >
-          </mat-form-field>
+            <mat-form-field class="col-12 sm:col-6">
+              <mat-label>Alter ego</mat-label>
+              <input
+              formControlName="alter_ego"
+              matInput
+              type="text"
+              required
+              >
+            </mat-form-field>
 
-          <mat-form-field class="col-12">
-            <mat-label>Primera aparicion</mat-label>
-            <input
-            matInput
-            type="text"
-            required
-            >
-          </mat-form-field>
+            <mat-form-field class="col-12">
+              <mat-label>Primera aparicion</mat-label>
+              <input
+              formControlName="first_appearance"
+              matInput
+              type="text"
+              required
+              >
+            </mat-form-field>
 
-          <mat-form-field class="col-12">
-            <mat-label>Personajes</mat-label>
-            <input
-            matInput
-            type="text"
-            required
-            >
-          </mat-form-field>
+            <mat-form-field class="col-12">
+              <mat-label>Personajes</mat-label>
+              <input
+              formControlName="characters"
+              matInput
+              type="text"
+              required
+              >
+            </mat-form-field>
 
-          <mat-form-field class="col-12">
-            <mat-label>Creador</mat-label>
-            <mat-select required>
-              @for (publisher of publishers; track $index) {
-                <mat-option [value]="publisher"> {{publisher.desc}}</mat-option>
-              }
+            <mat-form-field class="col-12">
+              <mat-label>Creador</mat-label>
+              <mat-select required formControlName="publisher">
+                @for (publisher of publishers; track $index) {
+                  <mat-option [value]="publisher.id"> {{publisher.desc}}</mat-option>
+                }
 
-            </mat-select>
-          </mat-form-field>
-        </div>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="col-12">
+              <mat-label>Alternative Image</mat-label>
+              <input
+              formControlName="alt_img"
+              matInput
+              type="text"
+              >
+            </mat-form-field>
+          </div>
+
+
+        </form>
 
         <div class="flex justify-content-between">
 
-          <button mat-flat-button>
-            Borrar
-          </button>
+          @if( !currentHero.id){
+            <button mat-flat-button (click)="onDeleteHero()">
+              Borrar
+            </button>
+          }
 
-          <button mat-flat-button>
+
+          <button mat-flat-button (click)="onSubmit()">
             <mat-icon>save</mat-icon>
             Guardar
           </button>
@@ -82,9 +105,14 @@
 
   <div class="col-12 sm:col-6">
     <mat-card>
-      <img src="" alt="imagen del heroe" mat-card-image>
+      <img [src]="currentHero | heroImage" alt="imagen del heroe" mat-card-image>
     </mat-card>
 
   </div>
+
+  <pre>
+    {{ currentHero | json}}
+  </pre>
+
 
 </div>
