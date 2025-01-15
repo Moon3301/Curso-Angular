@@ -1,18 +1,45 @@
 
 @if (hero) {
-  <div class="grid">
-    <mat-card class="col-12 sm:col-6">
+  <div class="grid" style="border: 1px solid black;">
+
+    <mat-card class="col-12 sm:col-6" style=" border: 1px solid black;">
       <mat-card-header>
         <mat-card-title>{{ hero.alter_ego}} </mat-card-title>
         <mat-card-subtitle> {{ hero.superhero }}</mat-card-subtitle>
       </mat-card-header>
 
-
-      <img [src]="hero | heroImage" [alt]="hero.superhero" mat-card-image>
+      <img [src]="hero | heroImage" [alt]="hero.superhero" mat-card-image class="mx-auto" width="300px" height="500px">
     </mat-card>
+
+    <mat-card class="col-12 sm:col-6" style=" border: 1px solid black;">
+
+      <mat-card-header>
+        <mat-card-title>Informacion </mat-card-title>
+        <mat-card-subtitle> {{ hero.superhero }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <mat-list>
+
+          <mat-list-item>{{ hero.first_appearance }}</mat-list-item>
+          <mat-list-item>{{ hero.characters }}</mat-list-item>
+          <mat-list-item>{{ hero.publisher }}</mat-list-item>
+          <mat-list-item>{{ hero.alter_ego }}</mat-list-item>
+
+        </mat-list>
+
+        <button
+          mat-flat-button
+          (click)="goBack()"
+        >
+          Regresar
+        </button>
+      </mat-card-content>
+
+    </mat-card>
+
+
   </div>
-
-
 
 }@else {
 
