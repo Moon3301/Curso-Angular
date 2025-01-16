@@ -15,7 +15,7 @@
     <mat-card>
       <mat-card-content>
 
-        <form [formGroup]="heroForm" (ngSubmit)="onSubmit()">
+        <form class="grid" [formGroup]="heroForm" (ngSubmit)="onSubmit()">
           <div class="grid">
             <mat-form-field class="col-12 sm:col-6">
               <mat-label>Super Heroe</mat-label>
@@ -77,17 +77,15 @@
             </mat-form-field>
           </div>
 
-
         </form>
 
         <div class="flex justify-content-between">
 
-          @if( !currentHero.id){
+          @if(currentHero.id){
             <button mat-flat-button (click)="onDeleteHero()">
               Borrar
             </button>
           }
-
 
           <button mat-flat-button (click)="onSubmit()">
             <mat-icon>save</mat-icon>
@@ -100,7 +98,6 @@
 
     </mat-card>
 
-
   </div>
 
   <div class="col-12 sm:col-6">
@@ -109,10 +106,5 @@
     </mat-card>
 
   </div>
-
-  <pre>
-    {{ currentHero | json}}
-  </pre>
-
 
 </div>
