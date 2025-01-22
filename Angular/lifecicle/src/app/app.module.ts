@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { provideHttpClient } from '@angular/common/http';
+import { ProductsModule } from './products/products.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -12,9 +12,11 @@ import { provideHttpClient } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ProductsModule,
+    CommonModule
   ],
-  providers: [provideHttpClient()],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
